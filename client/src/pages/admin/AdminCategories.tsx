@@ -61,7 +61,7 @@ function CategoryForm({ category, nextSortOrder, onClose }: FormProps) {
     }
   }
 
-  const inputClass = "w-full rounded-md border px-3 py-2 outline-none focus:border-orange-500";
+  const inputClass = "w-full rounded-md border px-3 py-2 outline-none focus:border-fire";
 
   return (
     <form
@@ -93,7 +93,7 @@ function CategoryForm({ category, nextSortOrder, onClose }: FormProps) {
       </div>
 
       <label className="inline-flex items-center gap-2 text-sm">
-        <input type="checkbox" className="h-4 w-4 accent-orange-500" {...register("isActive")} />
+        <input type="checkbox" className="h-4 w-4 accent-fire-500" {...register("isActive")} />
         Aktivdir (menyuda göstərilir)
       </label>
 
@@ -101,7 +101,7 @@ function CategoryForm({ category, nextSortOrder, onClose }: FormProps) {
         <button
           type="submit"
           disabled={isSaving}
-          className="rounded-md bg-orange-500 px-5 py-2 font-medium text-white disabled:opacity-50"
+          className="rounded-md bg-fire-500 px-5 py-2 font-medium text-white disabled:opacity-50"
         >
           {isSaving ? "Saxlanılır..." : "Saxla"}
         </button>
@@ -166,7 +166,7 @@ export default function AdminCategories() {
         {editing === null && (
           <button
             onClick={() => setEditing("new")}
-            className="rounded-md bg-orange-500 px-4 py-2 text-sm font-medium text-white"
+            className="rounded-md bg-fire-500 px-4 py-2 text-sm font-medium text-white"
           >
             + Yeni kateqoriya
           </button>
@@ -237,12 +237,12 @@ export default function AdminCategories() {
                       type="checkbox"
                       checked={c.isActive}
                       onChange={(e) => handleToggle(c, e.target.checked)}
-                      className="h-4 w-4 accent-orange-500"
+                      className="h-4 w-4 accent-fire-500"
                       aria-label="Aktiv"
                     />
                   </td>
                   <td className="space-x-3 px-4 py-3 text-right">
-                    <button onClick={() => setEditing(c)} className="text-orange-600 underline">
+                    <button onClick={() => setEditing(c)} className="text-fire600 underline">
                       Redaktə
                     </button>
                     <button

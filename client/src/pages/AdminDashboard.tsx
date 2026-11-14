@@ -119,7 +119,7 @@ export default function AdminDashboard() {
               key={d}
               onClick={() => setDays(d)}
               className={`rounded-full border px-3 py-1 text-sm ${
-                days === d ? "bg-orange-500 text-white" : ""
+                days === d ? "bg-fire-500 text-white" : ""
               }`}
             >
               Son {d} gün
@@ -209,7 +209,7 @@ export default function AdminDashboard() {
                     </td>
                     <td className="py-2 pr-4 text-gray-600">{formatDate(o.createdAt)}</td>
                     <td className="py-2 text-right">
-                      <Link to={`/admin/orders/${o.id}`} className="text-orange-600 underline">
+                      <Link to={`/admin/orders/${o.id}`} className="text-fire600 underline">
                         Bax
                       </Link>
                     </td>

@@ -88,7 +88,7 @@ export default function AdminOrderDetail() {
                 key={s}
                 disabled={isUpdating}
                 onClick={() => change(s)}
-                className="rounded-md bg-orange-500 px-4 py-2 text-white disabled:opacity-50"
+                className="rounded-md bg-fire-500 px-4 py-2 text-white disabled:opacity-50"
               >
                 {STATUS_LABELS[s]}
               </button>

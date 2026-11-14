@@ -107,7 +107,7 @@ export default function AdminProductForm() {
     );
   }
 
-  const inputClass = "w-full rounded-md border px-3 py-2 outline-none focus:border-orange-500";
+  const inputClass = "w-full rounded-md border px-3 py-2 outline-none focus:border-fire";
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -206,7 +206,7 @@ export default function AdminProductForm() {
           <label className="inline-flex items-center gap-2 text-sm">
             <input
               type="checkbox"
-              className="h-4 w-4 accent-orange-500"
+              className="h-4 w-4 accent-fire-500"
               {...register("isAvailable")}
             />
             Mövcuddur
@@ -214,7 +214,7 @@ export default function AdminProductForm() {
           <label className="inline-flex items-center gap-2 text-sm">
             <input
               type="checkbox"
-              className="h-4 w-4 accent-orange-500"
+              className="h-4 w-4 accent-fire-500"
               {...register("isFeatured")}
             />
             Ana səhifədə göstər
@@ -225,7 +225,7 @@ export default function AdminProductForm() {
           <button
             type="submit"
             disabled={isSaving}
-            className="rounded-md bg-orange-500 px-5 py-2 font-medium text-white disabled:opacity-50"
+            className="rounded-md bg-fire-500 px-5 py-2 font-medium text-white disabled:opacity-50"
           >
             {isSaving ? "Saxlanılır..." : "Saxla"}
           </button>
