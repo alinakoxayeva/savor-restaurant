@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router";
+import { Menu } from "lucide-react";
 import { baseApi } from "@/app/api/baseApi";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { logout } from "@/features/auth/authSlice";
@@ -25,7 +26,7 @@ export default function AdminLayout() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-paper">
       {open && (
         <div
           className="fixed inset-0 z-20 bg-black/40 md:hidden"
@@ -34,11 +35,16 @@ export default function AdminLayout() {
       )}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-30 w-60 transform border-r bg-white p-4 transition-transform md:static md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-30 w-60 transform bg-forest p-5 text-cream transition-transform md:static md:translate-x-0 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <p className="mb-6 text-xl font-bold text-orange-500">Savor Admin</p>
+        <div className="mb-8">
+          <p className="font-display text-3xl">savor.</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-saffron">
+            Admin
+          </p>
+        </div>
         <nav className="flex flex-col gap-1">
           {links.map((l) => (
             <NavLink
@@ -47,8 +53,10 @@ export default function AdminLayout() {
               end={l.end}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `rounded-md px-3 py-2 text-sm ${
-                  isActive ? "bg-orange-500 font-medium text-white" : "text-gray-700 hover:bg-gray-100"
+                `rounded-md px-3 py-2.5 text-sm ${
+                  isActive
+                    ? "bg-saffron font-bold text-russet"
+                    : "text-cream hover:bg-cream/10"
                 }`
               }
             >
@@ -59,26 +67,29 @@ export default function AdminLayout() {
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex items-center justify-between border-b bg-white px-4 py-3">
+        <header className="flex items-center justify-between border-b border-cream bg-paper px-4 py-3">
           <button
-            className="rounded-md border px-3 py-1 text-sm md:hidden"
+            className="flex items-center gap-2 rounded-md bg-cream px-3 py-1.5 text-sm font-bold text-russet md:hidden"
             onClick={() => setOpen(true)}
             aria-label="Menyunu aç"
           >
-            ☰ Menyu
+            <Menu size={16} /> Menyu
           </button>
           <div className="ml-auto flex items-center gap-4 text-sm">
-            <Link to="/" className="underline">
+            <Link to="/" className="font-bold text-fire underline">
               Sayta qayıt
             </Link>
-            <span className="text-gray-600">{user?.name}</span>
-            <button onClick={handleLogout} className="rounded-md border px-3 py-1">
+            <span className="hidden text-russet sm:inline">{user?.name}</span>
+            <button
+              onClick={handleLogout}
+              className="rounded-md border border-russet px-3 py-1.5 font-bold text-russet"
+            >
               Çıxış
             </button>
           </div>
         </header>
 
-        <main className="flex-1 p-4 md:p-6">
+        <main className="flex-1 p-4 text-russet md:p-6">
           <Outlet />
         </main>
       </div>

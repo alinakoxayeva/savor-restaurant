@@ -135,7 +135,7 @@ export default function AdminOrders() {
                     <td className="px-4 py-3">{o.paymentMethod === "CASH" ? "Nağd" : "Kart"}</td>
                     <td className="px-4 py-3 text-gray-600">{formatDate(o.createdAt)}</td>
                     <td className="px-4 py-3 text-right">
-                      <Link to={`/admin/orders/${o.id}`} className="text-orange-600 underline">
+                      <Link to={`/admin/orders/${o.id}`} className="text-fire600 underline">
                         Bax
                       </Link>
                     </td>

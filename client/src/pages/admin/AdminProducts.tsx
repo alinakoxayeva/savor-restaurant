@@ -90,7 +90,7 @@ export default function AdminProducts() {
         <h1 className="text-2xl font-bold">Məhsullar</h1>
         <Link
           to="/admin/products/new"
-          className="rounded-md bg-orange-500 px-4 py-2 text-sm font-medium text-white"
+          className="rounded-md bg-fire-500 px-4 py-2 text-sm font-medium text-white"
         >
           + Yeni məhsul
         </Link>
@@ -168,7 +168,7 @@ export default function AdminProducts() {
                           type="checkbox"
                           checked={p.isAvailable}
                           onChange={(e) => handleToggle(p.id, e.target.checked)}
-                          className="h-4 w-4 accent-orange-500"
+                          className="h-4 w-4 accent-fire-500"
                         />
                         <span className="ml-2 text-xs text-gray-600">
                           {p.isAvailable ? "Bəli" : "Bitib"}
@@ -178,7 +178,7 @@ export default function AdminProducts() {
                     <td className="space-x-3 px-4 py-3 text-right">
                       <Link
                         to={`/admin/products/${p.id}/edit`}
-                        className="text-orange-600 underline"
+                        className="text-fire600 underline"
                       >
                         Redaktə
                       </Link>
