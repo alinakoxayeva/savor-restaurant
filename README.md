@@ -1,78 +1,161 @@
-# React + TypeScript + Vite
+# Savor 🍽️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌐 **English** | [Azərbaycanca](README.az.md)
 
-Currently, two official plugins are available:
+**Savor** is a full-stack online food ordering website for a restaurant. Customers browse the menu, add dishes to their cart, enter a delivery address, place an order and track its status live. Administrators manage the menu, orders and users, and view sales statistics.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🔗 **Live demo:** https://bitego-website.vercel.app/
 
-## React Compiler
+> Note: the project was originally called BiteGo and is now named Savor. The live link still uses the old name.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Screenshots
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+| Home | Menu |
+|---|---|
+| ![Home](docs/screenshots/home.png) | ![Menu](docs/screenshots/menu.png) |
 
-## Expanding the ESLint configuration
+| Cart | Admin panel |
+|---|---|
+| ![Cart](docs/screenshots/cart.png) | ![Admin panel](docs/screenshots/admin.png) |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Mobile view**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![Mobile](docs/screenshots/mobile.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Customers
+- Sign up and log in (JWT authentication)
+- Menu with search, category filter, sorting (price, name, newest) and pagination
+- Featured dishes and categories on the home page
+- Product page with quantity selector
+- Cart: change quantities, remove items, clear the cart
+- Checkout with address, phone, note and payment method (cash or simulated card)
+- My orders: order list and order details
+- Live order tracking (confirmed, preparing, on the way, delivered) and cancelling pending orders
+- Responsive design for mobile
 
-```
+### Administrators
+- Dashboard with sales statistics and charts
+- Order management and status updates
+- Product and category management
+- User list
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Frontend**
+- React 19, TypeScript, Vite
+- Tailwind CSS 4, shadcn/ui (Radix UI), Lucide icons
+- Redux Toolkit and RTK Query (cart, auth, API requests)
+- React Router
+- React Hook Form and Zod (form validation)
+- Recharts (admin charts), Sonner (notifications)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Backend**
+- Node.js, Express 5, TypeScript
+- PostgreSQL, Prisma ORM
+- JWT and bcryptjs (authentication and password hashing)
+- Zod (request validation), Helmet, CORS, express-rate-limit (security)
+
+**Design:** Savor design system (Figma). Colors: red, cream, green, saffron and brown. Fonts: Playfair Display and DM Sans.
+
+## Project structure
 
 ```
+.
+├── client/          # React app (Vite)
+│   └── src/
+│       ├── app/         # store, hooks, baseApi
+│       ├── components/  # shared and page components
+│       ├── features/    # auth, cart, products, orders (slices and API)
+│       ├── pages/       # pages
+│       └── lib/         # helpers
+└── server/          # Express API
+    ├── prisma/      # schema and seed
+    └── src/         # routes, middleware, server.ts
+```
+
+## Running locally
+
+**Requirements:** Node.js 20+ and a PostgreSQL database.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/alinakoxayeva/bitego-website.git
+cd bitego-website
+```
+
+### 2. Backend
+
+```bash
+cd server
+npm install
+```
+
+Create `server/.env` (see `.env.example`):
+
+```dotenv
+DATABASE_URL=postgresql://user:password@localhost:5432/savor
+PORT=4000
+CLIENT_URL=http://localhost:5173
+JWT_SECRET=your-strong-secret
+```
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `PORT` | Server port |
+| `CLIENT_URL` | Frontend URL (used for CORS) |
+| `JWT_SECRET` | Secret used to sign tokens |
+
+Set up the database, load demo data and start the server:
+
+```bash
+npx prisma migrate dev
+npm run seed
+npm run dev
+```
+
+The API runs at `http://localhost:4000`. To browse the database, run `npm run studio`.
+
+### 3. Frontend
+
+In a new terminal:
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+The site opens at `http://localhost:5173`. You may need to set the API URL in `client/.env` (the variable name is defined in the `baseApi` file).
+
+### Production build
+
+```bash
+cd client
+npm run build
+```
+
+## Demo accounts
+
+| Role | Email | Password |
+|---|---|---|
+| Customer | user@dadli.az | User123! |
+| Administrator | admin@dadli.az | Admin123! |
+
+> These accounts are for demo purposes only.
+
+## Deployment
+
+- **Frontend:** Vercel
+- **Backend and database:** the backend service and the PostgreSQL database are hosted separately
+
+The backend may be on a free plan that sleeps when idle, so the first request after a break can take a little longer.
+
+## Author
+
+**Alina Kokhayeva** — Azerbaijan State Oil and Industry University, IT
+
+GitHub: [alinakoxayeva](https://github.com/alinakoxayeva)
