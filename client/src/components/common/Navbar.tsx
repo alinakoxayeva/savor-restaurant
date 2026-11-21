@@ -32,22 +32,43 @@ export default function Navbar() {
 
   const links = (
     <>
-      <NavLink to="/" end className={open ? mobileLinkClass : linkClass} onClick={() => setOpen(false)}>
+      <NavLink
+        to="/"
+        end
+        className={open ? mobileLinkClass : linkClass}
+        onClick={() => setOpen(false)}
+      >
         Ana səhifə
       </NavLink>
-      <NavLink to="/menu" className={open ? mobileLinkClass : linkClass} onClick={() => setOpen(false)}>
+      <NavLink
+        to="/menu"
+        className={open ? mobileLinkClass : linkClass}
+        onClick={() => setOpen(false)}
+      >
         Menyu
       </NavLink>
-      <NavLink to="/about" className={open ? mobileLinkClass : linkClass} onClick={() => setOpen(false)}>
+      <NavLink
+        to="/about"
+        className={open ? mobileLinkClass : linkClass}
+        onClick={() => setOpen(false)}
+      >
         Haqqımızda
       </NavLink>
       {user && (
-        <NavLink to="/orders" className={open ? mobileLinkClass : linkClass} onClick={() => setOpen(false)}>
+        <NavLink
+          to="/orders"
+          className={open ? mobileLinkClass : linkClass}
+          onClick={() => setOpen(false)}
+        >
           Sifarişlərim
         </NavLink>
       )}
       {user?.role === "ADMIN" && (
-        <NavLink to="/admin" className={open ? mobileLinkClass : linkClass} onClick={() => setOpen(false)}>
+        <NavLink
+          to="/admin"
+          className={open ? mobileLinkClass : linkClass}
+          onClick={() => setOpen(false)}
+        >
           Admin panel
         </NavLink>
       )}
@@ -84,7 +105,10 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
-                  <Link to="/login" className="font-bold text-russet hover:text-fire">
+                  <Link
+                    to="/login"
+                    className="font-bold text-russet hover:text-fire"
+                  >
                     Daxil ol
                   </Link>
                   <Link
