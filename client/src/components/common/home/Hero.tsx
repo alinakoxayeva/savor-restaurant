@@ -46,9 +46,13 @@ export default function Hero() {
             className="aspect-4/5 w-full rounded-t-[280px] rounded-b-3xl object-cover"
           />
           <div className="absolute -bottom-5 -left-5 flex size-28 flex-col items-center justify-center rounded-full bg-forest text-center text-cream">
-            <span className="text-[9px] uppercase tracking-wider">Hazırlanıb</span>
+            <span className="text-[9px] uppercase tracking-wider">
+              Hazırlanıb
+            </span>
             <span className="font-display text-xl">sevgi ilə.</span>
-            <span className="text-[9px] uppercase tracking-wider">Təzə təqdim</span>
+            <span className="text-[9px] uppercase tracking-wider">
+              Təzə təqdim
+            </span>
           </div>
         </div>
       </div>
