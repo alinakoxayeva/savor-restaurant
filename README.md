@@ -20,7 +20,7 @@
 
 **Mobile view**
 
-![Mobile](docs/screenshots/mobile.png)
+![Mobile](docs/video/savormobile.mp4)
 
 ## Features
 
